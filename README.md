@@ -1,38 +1,50 @@
-# vue-practice-27
+# Spektrum
 
-This template should help get you started developing with Vue 3 in Vite.
+Веб-приложение для работы с цветом: генерация палитр, проверка контраста по WCAG и экспорт цветов в форматы для разработки.
 
-## Recommended IDE Setup
+## Возможности
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Генератор палитр** — создание палитр на основе цветовых гармоний: случайная, аналоговая, монохромная, триадная, комплементарная и split-complementary. Дополнительно — палитры по настроению (спокойная, энергичная, профессиональная, тёплая, холодная, природная).
+- **Библиотека** — сохранение палитр в браузере (localStorage), отметка избранного и теги.
+- **Проверка контраста** — расчёт коэффициента контрастности между цветами и оценка по уровням WCAG (AAA, AA, AA Large, Fail).
+- **Экспорт** — выгрузка палитры в форматах CSS Variables, SCSS Variables, Tailwind Config и JSON.
+- Конвертация цветов между HEX, RGB и HSL.
 
-## Recommended Browser Setup
+## Стек
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3 (Composition API)
+- Vue Router
+- Vite
 
-## Customize configuration
+## Структура
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```
+src/
+  views/
+    GeneratorView.vue   # генерация палитр
+    LibraryView.vue     # сохранённые палитры
+    ContrastView.vue    # проверка контраста WCAG
+    ExportView.vue      # экспорт в CSS/SCSS/Tailwind/JSON
+  composables/
+    useColors.js        # конвертация цветов, генерация палитр, WCAG, работа с библиотекой
+  router/
+    index.js            # маршрутизация
+  App.vue
+  main.js
+```
 
-## Project Setup
+## Запуск
+
+Требуется Node.js (^20.19.0 или >=22.12.0).
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Сборка для продакшена:
 
 ```sh
 npm run build
+npm run preview
 ```
